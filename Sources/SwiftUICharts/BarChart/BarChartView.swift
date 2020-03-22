@@ -95,7 +95,7 @@ public struct BarChartView : View {
                 maxWidth: self.isFullWidth ? .infinity : self.formSize.width,
                 minHeight:self.formSize.height,
                 maxHeight:self.formSize.height)
-            .gesture(DragGesture()
+            .gesture(DragGesture(minimumDistance: 16, coordinateSpace: .local)
                 .onChanged({ value in
                     self.touchLocation = value.location.x/self.formSize.width
                     self.showValue = true
@@ -109,8 +109,6 @@ public struct BarChartView : View {
                     self.showLabelValue = false
                     self.touchLocation = -1
                 })
-        )
-            .gesture(TapGesture()
         )
     }
     
